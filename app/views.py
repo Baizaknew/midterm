@@ -51,8 +51,10 @@ def employee_update(id):
         form.populate_obj(employee)
         db.session.add(employee)
         db.session.commit()
+        flash("УРА! У вас получилось что-то поменять!")
         return redirect(url_for('index'))
     else:
+        flash('Какая-то ошибочка: ')
         print(form.errors)
     return render_template('standard_form.html', form=form)
 
