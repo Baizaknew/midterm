@@ -103,7 +103,7 @@ def login():
                 print(form.errors)
         else:
             print(form.errors)
-    return render_template('user_form.html', form=form)
+    return render_template('user_form.html', form=form, title=title)
 
 
 def logout():
