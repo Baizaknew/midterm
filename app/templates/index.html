@@ -33,6 +33,17 @@
       </tbody>
       {% endfor %}
     </table>
+
+        <div>
+            <a href="{{ url_for('employee_create') }}" class="btn btn-info">Добавить нового сотрудника</a>
+        </div>
+
+        <br>
+
+        <div>
+            <a href="{{ url_for('position_create') }}" class="btn btn-info">Добавить новую позицию</a>
+        </div>
+
 </div>
 
 {% endblock content %}
