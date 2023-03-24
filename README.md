@@ -9,9 +9,26 @@ To run the application, follow these steps:
 
 1. Download archive with pre-prepared files.
 2. Create a virtual environment and activate it 
-```python -m venv venv
+```
+python -m venv venv
 . venv/bin/activate (для Linux/Mac)
 venv\Scripts\activate (для Windows)
 ```
 
 3. Install required packages:
+```
+pip install -r requirements.txt
+```
+4. Create database and migrations:
+```
+flask db init
+flask db migrate
+flask db upgrade
+```
+5. Run the application:
+```
+python manage.py
+```
+6. Go to the main page of the application: http://127.0.0.1:5000/
+
+### Application structure
