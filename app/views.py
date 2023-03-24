@@ -21,7 +21,9 @@ def position_create():
             form.populate_obj(position)
             db.session.add(position)
             db.session.commit()
-            flash(f'Успешно созданно')
+            flash(f'Успешно', 'success')
+        else:
+            flash(f'Ошибка', 'danger')
     return render_template('standard_form.html', form=form)
 
 
