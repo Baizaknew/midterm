@@ -36,9 +36,10 @@ def employee_create():
             form.populate_obj(employee)
             db.session.add(employee)
             db.session.commit()
+            flash(f'Успешно', 'success')
             return redirect(url_for('index'))
         else:
-            print(form.errors)
+            flash(f'Ошибка', 'danger')
     return render_template('standard_form.html', form=form)
 
 
