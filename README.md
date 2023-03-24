@@ -9,8 +9,9 @@ To run the application, follow these steps:
 
 1. Download archive with pre-prepared files.
 2. Create a virtual environment and activate it 
-( python -m venv venv
+```python -m venv venv
 . venv/bin/activate (для Linux/Mac)
-venv\Scripts\activate (для Windows) )
+venv\Scripts\activate (для Windows)
+```
 
 3. Install required packages:
