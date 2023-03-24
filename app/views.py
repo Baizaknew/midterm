@@ -79,7 +79,7 @@ def register():
             try:
                 db.session.commit()
             except IntegrityError:
-                flash('Такой пользователь есть', "danger")
+                flash('Такой пользователь уже существует', "danger")
                 return render_template('register.html', form=form, title=title)
             else:
                 flash("Успешная регистрация", "success")
@@ -99,7 +99,8 @@ def login():
                 login_user(user)
                 return redirect(url_for('index'))
             else:
-                print('Неправильные данные')
+                flash('Неправильные данные', 'danger')
+                print(form.errors)
         else:
             print(form.errors)
     return render_template('user_form.html', form=form)
