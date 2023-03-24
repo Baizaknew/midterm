@@ -48,25 +48,27 @@ def employee_update(id):
     employee = Employee.query.get(id)
     form = EmployeeForm(obj=employee)
     if request.method == 'POST':
-        form.populate_obj(employee)
-        db.session.add(employee)
-        db.session.commit()
-        flash("УРА! У вас получилось что-то поменять!")
-        return redirect(url_for('index'))
-    else:
-        flash('Какая-то ошибочка: ')
-        print(form.errors)
-    return render_template('standard_form.html', form=form)
+        if form.validate_on_submit():
+            form.populate_obj(employee)
+            db.session.add(employee)
+            db.session.commit()
+            flash(f"УРА! У вас получилось что-то поменять!", 'success')
+            return redirect(url_for('index'))
+        else:
+            print(form.errors)
+    return render_template('standard_form.html', form=form, employee=employee)
 
 
 @login_required
 def employee_delete(id):
     employee = Employee.query.get(id)
+    form = EmployeeForm(request.form)
     if request.method == 'POST':
         db.session.delete(employee)
         db.session.commit()
+        flash(f'Работник под номером {employee.id} успешно удален', 'danger')
         return redirect(url_for('index'))
-    return render_template('confirm_delete.html', employee=employee)
+    return render_template('confirm_delete.html', employee=employee, form=form)
 
 
 def register():
