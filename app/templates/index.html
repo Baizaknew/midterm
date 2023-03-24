@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h3 class="mb-5 mt-5 text-center">Список сотрудников</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ФИО</th>
+          <th scope="col">Инн</th>
+          <th scope="col">Должность</th>
+          <th scope="col">Отдел</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+            {% for employee in employees %}
+        <tr>
+          <th scope="row">{{ employee.id }}</th>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.inn }}</td>
+          <td>{{ employee.position.name }}</td>
+          <td>{{ employee.position.department }}</td>
+          <td>
+            {% if current_user.is_authenticated%}
+            <a class="btn btn-warning" href="{{ url_for('employee_update', id=employee.id)}}">Изменить</a>
+            <a class="btn btn-danger" href="{{ url_for('employee_delete', id=employee.id)}}">Удалить</a>
+            {% endif %}
+          </td>
+        </tr>
+
+      </tbody>
+      {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}
