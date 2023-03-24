@@ -15,13 +15,17 @@ def get_positions():
 
 
 class PositionForm(FlaskForm):
-    name = wf.StringField(label="Имя", validators=[
+    name = wf.StringField(label="Позиция", validators=[
         wf.validators.DataRequired()
     ])
     department = wf.StringField(label="Отдел")
     wage = wf.IntegerField(label="Ставка заработной платы", validators=[
         wf.validators.DataRequired()
     ])
+
+    def validate_wage(self,field):
+        if field.data<0:
+            raise wf.validators.ValidationError('Зарплата не может быть меньше нуля')
 
 
 class EmployeeForm(FlaskForm):
