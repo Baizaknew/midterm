@@ -1,5 +1,4 @@
 # Midterm project
-I decided to make a midterm project on the Flask framework, and for the final I will do it on Django.
 
 **Flask** is a framework for building web applications using the Python programming language.
 “Micro” doesn't mean that your entire web application fits into a single file of Python code, although it certainly could. Also, this does not mean that Flask lacks functionality. The "micro" in "microframework" means that Flask aims to stick to a simple yet extensible core. Flask won't decide many things for you, like which database to use. And the decisions it can make, such as which templating engine to use, are easy to change. Everything else is up to you, so Flask may turn out to be everything you need and nothing more.
